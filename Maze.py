@@ -5,7 +5,6 @@ class Maze:
         self.mat = matrix
         self.rows = len(self.mat)
         self.coulmns = len(self.mat[0])
-        print("HEY")
 
     def getStart(self):
         return self.mat[0][0]
@@ -13,23 +12,19 @@ class Maze:
 
     def getNeighbor(self, node):
         neighbors = []
-        x = self.index_2d(self.mat, node)
-        if x[0] > 0:
-            neighbors.append(self.mat[x[0]-1][x[1]])
-        if x[0] < self.rows:
-            neighbors.append(self.mat[x[0]+1][x[1]])
-        if x[1] > 0:
-            neighbors.append(self.mat[x[0]][x[1]-1])
-        if x[1] < self.coulmns:
-            neighbors.append(self.mat[x[0]][x[1]+1])
+        if node.getX() > 0:
+            neighbors.append(self.mat[node.getX()-1][node.getY()])
+        if node.getX() < self.rows-1:
+            neighbors.append(self.mat[node.getX()+1][node.getY()])
+        if node.getY() > 0:
+            neighbors.append(self.mat[node.getX()][node.getY()-1])
+        if node.getY() < self.coulmns-1:
+            neighbors.append(self.mat[node.getX()][node.getY()+1])
         return neighbors
 
-
-    def index_2d(self, data, search):
-        for i, e in enumerate(data):
-            try:
-                return i, e.index(search)
-            except ValueError:
-                pass
-        raise ValueError("{} is not in list".format(repr(search)))
+    def printMaze(self):
+        for r in range(self.rows):
+            for c in range(self.coulmns):
+                print(str(self.mat[r][c].getWight()) + " | ", end='')
+            print()
 

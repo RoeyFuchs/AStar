@@ -12,5 +12,5 @@ class MazeGenerator:
         mat = [[0 for x in range(columns)] for y in range(rows)]
         for r in range(rows):
             for c in range(columns):
-                mat[r][c] = Node(random.randint(self.min, self.max))
+                mat[r][c] = Node(random.randint(self.min, self.max), r, c)
         return Maze(mat)

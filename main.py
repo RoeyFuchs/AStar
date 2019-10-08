@@ -4,10 +4,11 @@ from MazeGenerator import MazeGenerator
 
 
 def main():
-    print("Hello World!")
-    x = MazeGenerator(1, 100).createRandom(5, 10)
+    x = MazeGenerator(10, 100).createRandom(5, 10)
+    x.printMaze()
     y = AStar(x)
-    y.solve(x.mat[3][3])
+    solved = y.solve(x.mat[2][2])
+    print(solved)
 
 
 if __name__ == "__main__":
